@@ -131,8 +131,8 @@ public class CategoryRepository : ICategoryRepository
     public async Task<List<Category>> GetCategoryToDoMultipleMappingAsync()
     {
         var query = @"SELECT
-                            cat.Id, cat.Name, Description,
-                            todo.Id, todo.Name, Description, CreatedDate, PersonId, CategoryId 
+                            cat.Id, cat.Name, cat.Description,
+                            todo.Id, todo.Name, todo.Description, CreatedDate, PersonId, CategoryId 
                         FROM 
                             Categories cat
                         JOIN 
