@@ -1,0 +1,30 @@
+CREATE DATABASE ToDoApiDapper
+
+Use ToDoApiDapper
+
+CREATE TABLE ToDos(
+    Id INT PRIMARY KEY IDENTITY NOT NULL,
+    Name VARCHAR(80) NOT NULL,
+    Description VARCHAR(255) NOT NULL,
+    CreatedDate DATETIME NOT NULL,
+    PersonId INT NOT NULL,
+    CategoryId INT NOT NULL,
+
+    CONSTRAINT [FK_ToDos_Person] FOREIGN KEY(PersonId)
+        REFERENCES People(Id),
+    CONSTRAINT [FK_ToDos_Category] FOREIGN KEY(CategoryId)
+        REFERENCES Categories(Id)
+);
+
+CREATE TABLE Categories(
+    Id INT PRIMARY KEY IDENTITY NOT NULL,
+    Name VARCHAR(80) NOT NULL,
+    Description VARCHAR(255) NOT NULL,
+);
+
+CREATE TABLE People(
+    Id INT PRIMARY KEY IDENTITY NOT NULL,
+    Name VARCHAR(80) NOT NULL,
+);
+
+
