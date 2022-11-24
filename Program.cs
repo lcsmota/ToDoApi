@@ -1,5 +1,14 @@
+using ToDoApi.Context;
+using ToDoApi.Contracts;
+using ToDoApi.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 {
+    builder.Services.AddSingleton<DapperContext>();
+    builder.Services.AddScoped<IToDoRepository, ToDoRepository>();
+    builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+    builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
     builder.Services.AddControllers();
 
     builder.Services.AddEndpointsApiExplorer();
