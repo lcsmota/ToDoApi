@@ -29,7 +29,7 @@ public class PeopleController : ControllerBase
         }
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id}", Name = "GetPersonById")]
     public async Task<IActionResult> GetPersonAsync(int id)
     {
         try
@@ -53,7 +53,7 @@ public class PeopleController : ControllerBase
         {
             var createdPerson = await _personRepository.CreateAsync(person);
 
-            return CreatedAtAction(nameof(GetPersonAsync), new { id = createdPerson.Id }, createdPerson);
+            return CreatedAtRoute("GetPersonById", new { id = createdPerson.Id }, createdPerson);
         }
         catch (System.Exception ex)
         {
